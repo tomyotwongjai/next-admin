@@ -1,0 +1,12 @@
+.header {
+    height: 40px;
+    background-color: #0594f3;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-family: sans-serif;
+  }
+  .logo {
+    font-size: 1.8em;
+  }

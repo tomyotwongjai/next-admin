@@ -1,0 +1,28 @@
+.card {
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #0e84f1;
+    margin: 27px;
+    cursor: pointer;
+}
+.card_wrapper {
+    font-family: system-ui;
+    padding: 15px;
+    padding-bottom: 18px;
+    padding-top: 0;
+}
+.student_card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 27px;
+    cursor: pointer;
+}
