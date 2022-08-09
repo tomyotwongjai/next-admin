@@ -1,20 +1,22 @@
-import {PrismaClient} from "@prisma/client";
+import {prisma} from '../../../db/prisma';
 
-const prisma = new PrismaClient();
-
-export default async function handler (req, res) {
-    try{
-        const result = await prisma.student.delete({
-            where: {
-                id: 19,
-            }
-        })
-        res.status(200).json(result);
-    } catch (error) {
-        console.log(error);
-    } finally {
-        await prisma.$disconnect();
-    }
-}
-
-
+export default async (req, res) => {
+	  const {id} = req.body;
+	try {
+		const deleteStudent = await prisma.courseEnrollment.deleteMany({
+			where: {
+				studentId: id
+			},
+		});
+		const studentToDelete = await prisma.student.delete({
+			where: {
+				id: id,
+			},
+		});
+		res.status(200).json(studentToDelete);
+		res.status(200).json(deleteStudent);
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
+	}
+};

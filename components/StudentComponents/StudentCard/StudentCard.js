@@ -1,27 +1,28 @@
-import React from 'react'
-import styles from './StudentCard.module.css'
-import Link from 'next/link'
+/** @format */
+import React from "react";
+import Link from "next/link";
 
-const ClassCard = () => {
 
-    // fetch data from prisma to show on page
-    
-  return (
-        // Link will navigate to student with unique id
-    <Link href="#">
-        <div className={styles.card}>
-            <div className={styles.card_wrapper}>
-                <div className={styles.card_title}>
-                    <h3>Tom Yotwongjai</h3>
-                </div>
-                <div className={styles.student_card}>
-                    <h2>Class attending</h2>
-                    <span>Math 101</span>
-                </div>
-            </div>
-        </div>
-    </Link>
-  )
-}
+const ClassCard = ({ student }) => {
 
-export default ClassCard
+	return (
+		// Link will navigate to student with unique id
+		<div className="card">
+			<div className="card_body">
+				<div className="card_title">
+					<h3>
+						{student.firstName} {student.lastName}
+					</h3>
+					<h4>{student.year}</h4>
+					<div className="card_wrapper">
+						<Link href={`/student/${student.id}`}>
+							<button>view</button>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default ClassCard;

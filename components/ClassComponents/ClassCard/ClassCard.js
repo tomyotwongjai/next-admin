@@ -1,26 +1,25 @@
-import React from 'react'
-import styles from './ClassCard.module.css'
-import Link from 'next/link'
+/** @format */
 
-const ClassCard = ({classes}) => {
- 
-  return (
-        // Link will navigate to student with unique id
-    <Link href="#">
-        <div className={styles.card}>
-            <div className={styles.card_wrapper}>
-                <div className={styles.card_title}>
-                    <h3>Math 101</h3>
-                </div>
-                <div className={styles.student_card}>
-                    <h2>Student attending</h2>
-                    <span>Tom Yotwongjai</span>
-                    <span>Agnieszka Madeja</span>
-                </div>
-            </div>
-        </div>
-    </Link>
-  )
-}
+import React from "react";
+import Link from "next/link";
 
-export default ClassCard
+const ClassCard = ({ classes }) => {
+	return (
+		// Link will navigate to student with unique id
+		<div className="card">
+			<div className="card_body">
+				<div className="card_title">
+					<h3>{classes.name}</h3>
+					<h4>{classes.courseDetails}</h4>
+				</div>
+				<div className="card_wrapper">
+					<Link href={`/class/${classes.id}`}>
+						<button>view</button>
+					</Link>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default ClassCard;

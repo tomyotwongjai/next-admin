@@ -1,22 +1,30 @@
-import {PrismaClient} from "@prisma/client";
+import { prisma } from "../../../db/prisma";
 
-const prisma = new PrismaClient();
-
-export default async function handler (req, res) {
+export default async  (req, res) => {
+    const {id, name, courseDetails, assignments, studentItem} = req.body;
     try{
-        const result = await prisma.class.update({
+        const updateClass = await prisma.class.update({
             where: {
-                id: 15,
+                id,
             },
             data: {
-                name: 'Spanish',
-                courseDetails: "305",
+                name,
+                courseDetails,
+                assignments,
+                members: {
+					create: {
+						student: {
+							connect: {
+								id: parseInt(studentItem),
+							},
+						},
+					},
+				},
             }
         })
-        res.status(200).json(result);
+        res.status(200).json(updateClass);
+        console.log(updateClass);
     } catch (error) {
         console.log(error);
-    } finally {
-        await prisma.$disconnect();
-    }
+    } 
 }

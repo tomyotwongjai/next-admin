@@ -14,13 +14,15 @@ model Student {
   id             Int     @default(autoincrement()) @id
   firstName      String  
   lastName       String
+  year           String?
   classes        CourseEnrollment[]
 }
 
 model Class {
   id             Int     @default(autoincrement()) @id
   name           String
-  courseDetails  String?      
+  courseDetails  String?     
+  assignments    String? 
   members        CourseEnrollment[] 
 }
 
